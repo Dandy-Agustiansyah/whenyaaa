@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>i love you</title>
+    <link rel="stylesheet" href="lin.css" />
+    <style>
+      /* Animation keyframes */
+      @keyframes entrance {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -60%) scale(0.7) rotate(-90deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1) rotate(-90deg);
+        }
+      }
+
+      @keyframes idleFloat {
+        0%, 100% {
+          transform: translate(-50%, -50%) rotate(-90deg) translateY(0);
+        }
+        50% {
+          transform: translate(-50%, -50%) rotate(-90deg) translateY(-10px);
+        }
+      }
+
+      /* Styles for the center image overlay */
+      .center-image {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 9999; /* highest layer */
+        pointer-events: none; /* so it does not interfere with underlying hearts if needed */
+        max-width: 20vw; /* Responsive max width */
+        max-height: 20vw; /* Responsive max height */
+        width: auto;
+        height: auto;
+
+        /* Entrance animation */
+        animation: entrance 1s ease forwards, idleFloat 4s ease-in-out 1s infinite alternate;
+      }
+
+      /* For users who prefer reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .center-image {
+          animation: none;
+          transform: translate(-50%, -50%) rotate(-90deg);
+        }
+      }
+
+      /* Styles for the centered text */
+      .center-text {
+        position: fixed;
+        top: 20%; /* Higher above the center image */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10000; /* Above the image */
+        font-size: 10vw; /* Responsive font size */
+        font-weight: 700;
+        color: red; /* Text color */
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+        user-select: none;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      }
+
+      /* Media Queries for responsiveness */
+      @media (max-width: 768px) {
+        .center-text {
+          font-size: 12vw; /* Increase font size for smaller screens */
+        }
+        .center-image {
+          max-width: 30vw; /* Increase image size for smaller screens */
+          max-height: 30vw; /* Increase image size for smaller screens */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .center-text {
+          font-size: 15vw; /* Further increase font size for very small screens */
+        }
+        .center-image {
+          max-width: 40vw; /* Further increase image size for very small screens */
+          max-height: 40vw; /* Further increase image size for very small screens */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="heart h0"></div>
+    <div class="heart h1"></div>
+    <div class="heart h2"></div>
+    <div class="heart h3"></div>
+    <div class="heart h4"></div>
+    <div class="heart h5"></div>
+    <div class="heart h6"></div>
+
+    <div class="center-text">I LOVE U</div> <!-- Centered text -->
+
+    <img
+      src="L.jpg"
+      alt="Green fitness icon with white text showing center fitness symbol, circular shape, modern design"
+      class="center-image"
+      onerror="this.style.display='none'"
+    />
+  </body>
+</html>
